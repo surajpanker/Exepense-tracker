@@ -12,22 +12,22 @@ let DUMMY_EXPENSE = [
 const App = () => {
     
     const [expenses, setExpenses] = useState(DUMMY_EXPENSE);
-    // function fetchData(){
-    //     fetch('https://techgun.website/sample/api/read.php').then(
-    //         response => {
-    //             return response.json();
-    //         }
-    //     ).then(
-    //         data => {
-    //             //console.log(data);
-    //             setExpenses(data);
-    //         }
-    //     );
-    // }
+    function fetchData(){
+        fetch('https://techgun.website/sample/api/read.php').then(
+            response => {
+                return response.json();
+            }
+        ).then(
+            data => {
+                //console.log(data);
+                setExpenses(data);
+            }
+        );
+    }
 
-    // useEffect(()=>{
-    //     fetchData();
-    // },[])
+    useEffect(()=>{
+        fetchData();
+    },[])
 
    
     const addExpenseHandler = (expense) => {
