@@ -5,41 +5,33 @@ import NewExpense from './components/NewExpense/NewExpense';
 import Expenses from './components/Expenses/Expenses';
 
 
-let DUMMY_EXPENSE = [];
+let DUMMY_EXPENSE = [
+        
+];
 
 const App = () => {
     
     const [expenses, setExpenses] = useState(DUMMY_EXPENSE);
+    // function fetchData(){
+    //     fetch('https://techgun.website/sample/api/read.php').then(
+    //         response => {
+    //             return response.json();
+    //         }
+    //     ).then(
+    //         data => {
+    //             //console.log(data);
+    //             setExpenses(data);
+    //         }
+    //     );
+    // }
 
-    function fetchData(){
-        fetch('https://techgun.website/sample/api/read.php').then(
-            response => {
-                return response.json();
-            }
-        ).then(
-            data => {
-                //console.log(data);
-                setExpenses(data);
-            }
-        );
-    }
+    // useEffect(()=>{
+    //     fetchData();
+    // },[])
 
-    useEffect(()=>{
-        fetchData();
-    },[]);
-
+   
     const addExpenseHandler = (expense) => {
-        fetch('https://techgun.website/sample/api/create.php', {
-            method: 'POST',
-            body: JSON.stringify(expense),
-            headers: {
-                'content-Type' : 'application/json'
-            }
-        }).then(
-            response => {
-                fetchData();
-            }
-        );
+        setExpenses([expense,...expenses])
     };
 
     return (
